@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เรดาร์ภูมิอากาศ</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family: "Sarabun", sans-serif;
+    }
+
+    .radar-box {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .radar-img {
+      width: 100%;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: #0d6efd;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+ <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="fw-bold text-primary">🌦️ ตรวจสอบอากาศ</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">หน้าหลัก</a></li>
+          <li class="nav-item"><a class="nav-link" href="search.html">ค้นหาจังหวัด</a></li>
+          <li class="nav-item"><a class="nav-link" href="radar.html">เรดาร์</a></li>
+          <li class="nav-item"><a class="nav-link" href="weatherall.html">สภาพอากาศ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container my-5">
+    <h1 class="text-center text-primary mb-4">🌧️ เรดาร์สภาพอากาศ</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="radar-box text-center">
+          <h2 class="mb-3" id="province-name">จังหวัด</h2>
+          <!-- ตัวอย่างภาพเรดาร์ -->
+          <img id="radar-image" class="radar-img" src="https://weather.tmd.go.th/svp/svp240_latest.jpg" alt="เรดาร์ฝน">
+          <p class="mt-3 text-muted">*ภาพเรดาร์อัปเดตทุก ๆ 10 นาที</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center py-3">
+    <p class="mb-0">© 2025 เว็บไซต์แสดงข้อมูลสภาพอากาศเพื่อการศึกษา</p>
+  </footer>
+
+  <script>
+    // อ่านค่าจังหวัดจาก URL
+    const params = new URLSearchParams(window.location.search);
+    const province = params.get('province');
+
+    // แสดงชื่อจังหวัด
+    document.getElementById('province-name').textContent = province ?? 'ไม่ระบุ';
+
+    // กำหนดภาพเรดาร์ตามจังหวัด (ตัวอย่าง: เชียงใหม่ = CHI)
+    const radarMap = {
+      'เชียงใหม่': 'CHI',
+      'กรุงเทพมหานคร': 'BKK',
+      'ขอนแก่น': 'KKC',
+      'สงขลา': 'SKA',
+      'นครราชสีมา': 'NRM'
+      // เพิ่มได้ตามต้องการ
+    };
+
+    const radarCode = radarMap[province] ?? 'CHI'; // ถ้าไม่พบ ใช้ CHI เป็นค่า default
+    const radarURL = `https://weather.bangkok.go.th/Images/Radar/nkradar.gif`;
+    document.getElementById('radar-image').src = radarURL;
+  </script>
+</body>
+
+</html>

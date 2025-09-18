@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ผลลัพธ์สภาพอากาศ</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family: "Sarabun", sans-serif;
+    }
+
+    .weather-box {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .weather-icon {
+      font-size: 3rem;
+    }
+
+    .temperature {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    footer {
+      background-color: #0d6efd;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="fw-bold text-primary">🌦️ ตรวจสอบอากาศ</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">หน้าหลัก</a></li>
+          <li class="nav-item"><a class="nav-link" href="search.html">ค้นหาจังหวัด</a></li>
+          <li class="nav-item"><a class="nav-link" href="radar.html">เรดาร์</a></li>
+          <li class="nav-item"><a class="nav-link" href="weatherall.html">สภาพอากาศ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <h1 class="text-center text-primary mb-4">📍 ผลลัพธ์สภาพอากาศ</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="weather-box text-center">
+          <div class="weather-icon mb-3">🌦️</div>
+          <h2 class="mb-2" id="province-name">จังหวัด</h2>
+          <div class="temperature">30°C</div>
+          <p class="mb-1">สภาพอากาศ: มีเมฆบางส่วน</p>
+          <p class="mb-1">ความชื้น: 65%</p>
+          <p class="mb-0">ความเร็วลม: 10 กม./ชม.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer class="text-center py-3">
+    <p class="mb-0">© 2025 เว็บไซต์แสดงข้อมูลสภาพอากาศเพื่อการศึกษา</p>
+  </footer>
+
+  <script>
+    // อ่านค่า 'province' จาก URL
+    const params = new URLSearchParams(window.location.search);
+    const province = params.get('province');
+
+    // ใส่ชื่อจังหวัดใน h2
+    document.getElementById('province-name').textContent = province ?? 'ไม่ระบุ';
+  </script>
+</body>
+
+</html>

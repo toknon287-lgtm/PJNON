@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ค้นหาจังหวัด</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family: "Sarabun", sans-serif;
+    }
+
+    .search-box {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    footer {
+      background-color: #0d6efd;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">🌦️ ตรวจสอบสภาพอากาศ</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto"><ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">หน้าหลัก</a></li>
+          <li class="nav-item"><a class="nav-link" href="search.html">ค้นหาจังหวัด</a></li>
+          <li class="nav-item"><a class="nav-link" href="radar.html">เรดาร์</a></li>
+          <li class="nav-item"><a class="nav-link" href="weatherall.html">สภาพอากาศ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+  <!-- Content -->
+  <div class="container my-5">
+    <h1 class="text-center text-primary mb-4">🔍 ค้นหาจังหวัด</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="search-box text-center">
+          <form id="searchForm">
+            <div class="mb-3">
+              <label for="provinceInput" class="form-label">กรอกชื่อจังหวัด:</label>
+              <input type="text" class="form-control" id="provinceInput" placeholder="เช่น เชียงใหม่" required />
+            </div>
+            <button type="submit" class="btn btn-primary">ค้นหา</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center py-3">
+    <p class="mb-0">© 2025 เว็บไซต์แสดงข้อมูลสภาพอากาศเพื่อการศึกษา</p>
+  </footer>
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const province = document.getElementById('provinceInput').value.trim();
+      if (province) {
+        window.location.href = `result.html?province=${encodeURIComponent(province)}`;
+      }
+    });
+  </script>
+
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script>
+  window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const province = urlParams.get('province') || 'ไม่ระบุ';
+    document.getElementById('province-name').textContent = province;
+
+    // ตรงนี้คุณสามารถใส่ logic แสดงข้อมูลอากาศตามจังหวัดได้
+  };
+</script>
+
+
+</body>
+
+</html>
