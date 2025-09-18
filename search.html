@@ -29,14 +29,16 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="#">🌦️ ตรวจสอบสภาพอากาศ</a>
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="fw-bold text-primary">🌦️ ตรวจสอบอากาศ</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto"><ul class="navbar-nav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link active" href="index.html">หน้าหลัก</a></li>
           <li class="nav-item"><a class="nav-link" href="search.html">ค้นหาจังหวัด</a></li>
           <li class="nav-item"><a class="nav-link" href="radar.html">เรดาร์</a></li>
@@ -81,7 +83,7 @@
     });
   </script>
 
-  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script>
   window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
